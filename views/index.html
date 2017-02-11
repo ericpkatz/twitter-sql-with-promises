@@ -3,9 +3,33 @@
   </head>
   <body>
     <h1><a href='/'>Twitter SQL With Promises</a></h1>
+    <form method='POST' action='/'>
+      <div>
+        <label>User</label>
+        <input name='name' value='{{ name }}' />
+      </div>
+      <div>
+        <label>Content</label>
+        <input name='content' />
+      </div>
+      <button type='submit'>Save</button>
+    </form>
+    {% if name %}
+      <div>
+          <a href='/'>All Tweets</a>
+      </div>
+    {% endif %}
+    <div>
+      There are {{users.length}} users.
+    </div>
     <ul>
       {% for tweet in tweets %}
-      <li>{{ tweet }}</li>
+      <li>
+        {{tweet.content}} 
+        <a href='/{{ tweet.name }}'>
+          {{tweet.name}} {{tweet.user_id }}
+        </a>
+      </li>
       {% endfor %}
     </ul>
   </body>
